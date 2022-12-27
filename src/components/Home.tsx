@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import Nav from './Nav';
 import Introduction from "./Introduction";
 import Footer from './Footer';
+import ProductThumbnail from "./ProductThumbnail";
 
 function Home() {
     return (
@@ -38,6 +39,7 @@ function Home() {
                     </div>
                 </div>
             </div>
+            <ProductThumbnail />
             <Introduction />
             <Footer />
         </div>
