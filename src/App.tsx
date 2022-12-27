@@ -1,10 +1,14 @@
 import React from 'react';
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import Home from './components/Home';
 
 function App() {
   return (
-    <div className="w-full h-screen bg-sky-400">
-
-    </div>
+        <BrowserRouter>
+            <Routes>
+                <Route index element={<Home />} />
+            </Routes>
+        </BrowserRouter>
   );
 }
 
