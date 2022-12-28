@@ -1,9 +1,9 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import Nav from './Nav';
-import Introduction from "./Introduction";
-import Footer from './Footer';
-import ProductThumbnail from "./ProductThumbnail";
+import Nav from '../components/Nav';
+import Introduction from "../components/Introduction";
+import Footer from '../components/Footer';
+import ProductThumbnail from "../components/ProductThumbnail";
 
 function Home() {
     return (
