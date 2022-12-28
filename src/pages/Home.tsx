@@ -25,7 +25,7 @@ function Home() {
                                 Experience natural, lifelike audio and exceptional build quality made for the passionate music
                                 enthusiast.
                             </p>
-                            <Link className="w-1/4 h-10 bg-orange-500 text-white text-sm flex justify-center items-center uppercase hover:text-gray-400" to={""}>
+                            <Link className="w-1/4 h-10 bg-orange-500 text-white text-sm flex justify-center items-center uppercase hover:text-gray-400" to={"product-details/xx99-mark-two-headphones"}>
                                 see product
                             </Link>
                         </div>
@@ -56,7 +56,7 @@ function Home() {
                         Upgrade to premium speakers that are phenomenally built to deliver
                         truly remarkable sound.
                     </p>
-                    <Link className="w-2/5 h-10 flex items-center text-sm justify-center text-white bg-black uppercase hover:text-gray-400" to={""}>
+                    <Link className="w-2/5 h-10 flex items-center text-sm justify-center text-white bg-black uppercase hover:text-gray-400" to={"product-details/zx9-speaker"}>
                         see product
                     </Link>
                 </div>
@@ -66,7 +66,7 @@ function Home() {
                     <h1 className="uppercase text-3xl font-bold">
                         zx7 speaker
                     </h1>
-                    <Link className="w-1/6 h-10 flex items-center text-sm justify-center font-bold border border-black uppercase hover:text-gray-400" to={""}>
+                    <Link className="w-1/6 h-10 flex items-center text-sm justify-center font-bold border border-black uppercase hover:text-gray-400" to={"product-details/zx7-speaker"}>
                         see product
                     </Link>
                 </div>
@@ -84,7 +84,7 @@ function Home() {
                         <h1 className="uppercase text-4xl font-bold">
                             yx1 earphones
                         </h1>
-                        <Link className="w-1/3 h-12 flex items-center text-sm justify-center font-bold border border-black uppercase hover:text-gray-400" to={""}>
+                        <Link className="w-1/3 h-12 flex items-center text-sm justify-center font-bold border border-black uppercase hover:text-gray-400" to={"product-details/yx1-earphones"}>
                             see product
                         </Link>
                     </div>

@@ -16,7 +16,7 @@ function ProductThumbnail() {
                         headphones
                     </h1>
                     <div className="w-full h-10 flex justify-center items-center">
-                        <Link className="uppercase text-sm text-gray-600 font-bold hover:text-gray-400" to={""}>
+                        <Link className="uppercase text-sm text-gray-600 font-bold hover:text-gray-400" to={"/headphones"}>
                             shop
                         </Link>
                         <BsChevronRight className="text-orange-500" />
@@ -34,7 +34,7 @@ function ProductThumbnail() {
                         speakers
                     </h1>
                     <div className="w-full h-10 flex justify-center items-center">
-                        <Link className="uppercase text-sm text-gray-600 font-bold hover:text-gray-400" to={""}>
+                        <Link className="uppercase text-sm text-gray-600 font-bold hover:text-gray-400" to={"/speakers"}>
                             shop
                         </Link>
                         <BsChevronRight className="text-orange-500" />
@@ -52,7 +52,7 @@ function ProductThumbnail() {
                         earphones
                     </h1>
                     <div className="w-full h-10 flex justify-center items-center">
-                        <Link className="uppercase text-sm text-gray-600 font-bold hover:text-gray-400" to={""}>
+                        <Link className="uppercase text-sm text-gray-600 font-bold hover:text-gray-400" to={"/earphones"}>
                             shop
                         </Link>
                         <BsChevronRight className="text-orange-500" />
