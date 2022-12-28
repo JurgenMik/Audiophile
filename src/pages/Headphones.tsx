@@ -15,7 +15,7 @@ function Headphones({products} : any) {
         <div className="w-full min-h-screen">
             <Nav />
             <div className="w-full h-56 bg-black flex items-center justify-center">
-                <h1 className="uppercase text-white text-3xl">
+                <h1 className="uppercase text-white text-3xl font-bold">
                     headphones
                 </h1>
             </div>
