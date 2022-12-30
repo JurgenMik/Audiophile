@@ -39,7 +39,7 @@ function Cart({cart, setCart, quantity, setQuantity} : any) {
     }
 
     return (
-        <div className="w-1/4 h-auto bg-white absolute top-50 right-60 mt-8 rounded-lg shadow-[10px_15px_15px_1200px_rgba(0,0,0,0.56)]">
+        <div className="w-1/4 h-auto bg-white absolute top-50 right-60 mt-8 rounded-lg shadow-[10px_15px_15px_1300px_rgba(0,0,0,0.56)]">
             <div className="w-4/5 ml-auto mr-auto h-20 flex items-center">
                 <h1 className="uppercase font-bold ml">
                     cart({cart.length})
