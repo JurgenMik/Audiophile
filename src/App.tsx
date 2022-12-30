@@ -19,6 +19,11 @@ function App() {
         {id: 6, quantity: 1},
     ]);
     const [cart, setCart] = useState<object[]>([]);
+    const [viewCart, setViewCart] = useState<boolean>(false);
+
+    const handleViewCart = () => {
+        setViewCart(!viewCart);
+    }
 
     useEffect(() => {
         setProducts(data);
@@ -27,11 +32,11 @@ function App() {
   return (
         <BrowserRouter>
             <Routes>
-                <Route index element={<Home />} />
-                <Route path="headphones" element={<Headphones products={products} />} />
-                <Route path="speakers" element={<Speakers products={products} />} />
-                <Route path="earphones" element={<Earphones products={products} />} />
-                <Route path="product-details/:slug" element={<ProductDetails products={products} quantity={quantity} setQuantity={setQuantity} setCart={setCart} cart={cart} />} />
+                <Route index element={<Home viewCart={viewCart} handleViewCart={handleViewCart} cart={cart} setCart={setCart} quantity={quantity} setQuantity={setQuantity} />} />
+                <Route path="headphones" element={<Headphones products={products} viewCart={viewCart} handleViewCart={handleViewCart} cart={cart} setCart={setCart} quantity={quantity} setQuantity={setQuantity} />} />
+                <Route path="speakers" element={<Speakers products={products} viewCart={viewCart} handleViewCart={handleViewCart} cart={cart} setCart={setCart} quantity={quantity} setQuantity={setQuantity} />} />
+                <Route path="earphones" element={<Earphones products={products} viewCart={viewCart} handleViewCart={handleViewCart} cart={cart} setCart={setCart} quantity={quantity} setQuantity={setQuantity} />} />
+                <Route path="product-details/:slug" element={<ProductDetails products={products} viewCart={viewCart} handleViewCart={handleViewCart} cart={cart} setCart={setCart} quantity={quantity} setQuantity={setQuantity} />} />
             </Routes>
         </BrowserRouter>
   );

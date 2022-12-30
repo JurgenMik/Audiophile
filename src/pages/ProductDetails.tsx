@@ -7,7 +7,7 @@ import Introduction from "../components/Introduction";
 import ProductThumbnail from "../components/ProductThumbnail";
 import Footer from '../components/Footer';
 
-function ProductDetails({products, quantity, setQuantity, setCart, cart} : any) {
+function ProductDetails({products, viewCart, handleViewCart, cart, setCart, quantity, setQuantity} : any) {
 
     let { slug } : any = useParams();
     let navigate : any = useNavigate();
@@ -55,7 +55,7 @@ function ProductDetails({products, quantity, setQuantity, setCart, cart} : any) 
 
     return (
         <div className="w-full min-h-screen">
-            <Nav />
+            <Nav viewCart={viewCart} handleViewCart={handleViewCart} cart={cart} setCart={setCart} quantity={quantity} setQuantity={setQuantity} />
             <div className="w-3/4 h-24 ml-auto mr-auto flex items-end">
                 <h1 onClick={handleNavigateBack} className="text-gray-600 hover:text-gray-400">
                     Go Back

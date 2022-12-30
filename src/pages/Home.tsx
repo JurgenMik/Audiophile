@@ -5,10 +5,10 @@ import Introduction from "../components/Introduction";
 import Footer from '../components/Footer';
 import ProductThumbnail from "../components/ProductThumbnail";
 
-function Home() {
+function Home({viewCart, handleViewCart, cart, setCart, quantity, setQuantity} : any) {
     return (
         <div className="w-full min-h-screen">
-            <Nav />
+            <Nav viewCart={viewCart} handleViewCart={handleViewCart} cart={cart} setCart={setCart} quantity={quantity} setQuantity={setQuantity} />
             <div className="w-full h-1/2 bg-neutral-900">
                 <div className="w-3/4 h-full ml-auto mr-auto flex">
                     <div className="w-3/5 flex flex-col justify-center bg-neutral-900">

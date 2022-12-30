@@ -5,7 +5,7 @@ import Introduction from "../components/Introduction";
 import Footer from '../components/Footer';
 import ProductThumbnail from "../components/ProductThumbnail";
 
-function Headphones({products} : any) {
+function Headphones({products, viewCart, handleViewCart, cart, setCart, quantity, setQuantity} : any) {
 
     const headphones = products.filter((product : any) => product.category === 'headphones');
 
@@ -13,7 +13,7 @@ function Headphones({products} : any) {
 
     return (
         <div className="w-full min-h-screen">
-            <Nav />
+            <Nav viewCart={viewCart} handleViewCart={handleViewCart} cart={cart} setCart={setCart} quantity={quantity} setQuantity={setQuantity} />
             <div className="w-full h-56 bg-black flex items-center justify-center">
                 <h1 className="uppercase text-white text-3xl font-bold">
                     headphones
