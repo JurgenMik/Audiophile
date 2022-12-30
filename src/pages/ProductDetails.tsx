@@ -7,7 +7,7 @@ import Introduction from "../components/Introduction";
 import ProductThumbnail from "../components/ProductThumbnail";
 import Footer from '../components/Footer';
 
-function ProductDetails({products, quantity, setQuantity} : any) {
+function ProductDetails({products, quantity, setQuantity, setCart, cart} : any) {
 
     let { slug } : any = useParams();
     let navigate : any = useNavigate();
@@ -46,6 +46,15 @@ function ProductDetails({products, quantity, setQuantity} : any) {
         }
     }
 
+    const handleAddToCart = () => {
+        let items = [...cart];
+
+        items.push(selected);
+        items.push(itemCount);
+
+        setCart(items);
+    }
+
     return (
         <div className="w-full min-h-screen">
             <Nav />
@@ -82,7 +91,7 @@ function ProductDetails({products, quantity, setQuantity} : any) {
                                 </p>
                                 <HiOutlinePlus onClick={handleQuantityInc} className="text-xs text-gray-400 hover:text-gray-600" />
                             </div>
-                            <button className="w-3/5 uppercase text-white font-bold bg-orange-500 hover:bg-orange-400">
+                            <button onClick={handleAddToCart} className="w-3/5 uppercase text-white font-bold bg-orange-500 hover:bg-orange-400">
                                 add to cart
                             </button>
                         </div>

@@ -18,6 +18,7 @@ function App() {
         {id: 5, quantity: 1},
         {id: 6, quantity: 1},
     ]);
+    const [cart, setCart] = useState<object[]>([]);
 
     useEffect(() => {
         setProducts(data);
@@ -30,7 +31,7 @@ function App() {
                 <Route path="headphones" element={<Headphones products={products} />} />
                 <Route path="speakers" element={<Speakers products={products} />} />
                 <Route path="earphones" element={<Earphones products={products} />} />
-                <Route path="product-details/:slug" element={<ProductDetails products={products} quantity={quantity} setQuantity={setQuantity} />} />
+                <Route path="product-details/:slug" element={<ProductDetails products={products} quantity={quantity} setQuantity={setQuantity} setCart={setCart} cart={cart} />} />
             </Routes>
         </BrowserRouter>
   );
