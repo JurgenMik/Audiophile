@@ -50,8 +50,6 @@ function ProductDetails({products, quantity, setQuantity, setCart, cart} : any) 
         let items = [...cart];
 
         items.push(selected);
-        items.push(itemCount);
-
         setCart(items);
     }
 
