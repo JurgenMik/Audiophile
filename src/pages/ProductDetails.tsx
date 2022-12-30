@@ -7,7 +7,7 @@ import Introduction from "../components/Introduction";
 import ProductThumbnail from "../components/ProductThumbnail";
 import Footer from '../components/Footer';
 
-function ProductDetails({products, quantity} : any) {
+function ProductDetails({products, quantity, setQuantity} : any) {
 
     let { slug } : any = useParams();
     let navigate : any = useNavigate();
@@ -16,12 +16,34 @@ function ProductDetails({products, quantity} : any) {
 
     const [selected, setSelected] = useState({...product});
 
+    let itemCount = quantity.find((item : any) => item.id === selected.id);
+
     useEffect(() => {
         setSelected({...product});
     }, [slug])
 
     const handleNavigateBack = () => {
         navigate(-1);
+    }
+
+    const handleQuantityInc = () => {
+        let quantities : any = [...quantity];
+        let index : number = quantity.findIndex((item : any) => item.id === selected.id);
+
+        quantities[index].quantity++;
+
+        setQuantity(quantities);
+    }
+
+    const handleQuantityDec = () => {
+        let quantities : any = [...quantity];
+        let index : number = quantity.findIndex((item : any) => item.id === selected.id);
+
+        if (quantities[index].quantity > 0) {
+            quantities[index].quantity--;
+
+            setQuantity(quantities);
+        }
     }
 
     return (
@@ -54,11 +76,11 @@ function ProductDetails({products, quantity} : any) {
                         </p>
                         <div className="w-2/3 h-14 flex space-x-4">
                             <div className="w-2/5 bg-gray-200 flex items-center justify-center space-x-6">
-                                <HiOutlineMinusSm className="text-xs text-gray-400 hover:text-gray-600" />
+                                <HiOutlineMinusSm onClick={handleQuantityDec} className="text-xs text-gray-400 hover:text-gray-600" />
                                 <p className="text-lg font-bold">
-                                    {quantity}
+                                    {itemCount.quantity}
                                 </p>
-                                <HiOutlinePlus className="text-xs text-gray-400 hover:text-gray-600" />
+                                <HiOutlinePlus onClick={handleQuantityInc} className="text-xs text-gray-400 hover:text-gray-600" />
                             </div>
                             <button className="w-3/5 uppercase text-white font-bold bg-orange-500 hover:bg-orange-400">
                                 add to cart
