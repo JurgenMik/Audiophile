@@ -56,8 +56,8 @@ function Checkout({cart, quantity, total} : any) {
             paymentMethodError = 'Please choose a payment method';
         }
 
-        if (billingInfo.e_money && !billingInfo.e_money.pin) {
-            e_moneyError = 'Please fill in your e_money details';
+        if (billingInfo.e_money && (!billingInfo.e_money_pin || !billingInfo.e_money_nb)) {
+            e_moneyError = 'Please fill in all the fields for e-money';
         }
 
         if (paymentMethodError) {
@@ -78,7 +78,7 @@ function Checkout({cart, quantity, total} : any) {
     }
 
     const handleViewPaymentModal = () => {
-        const valid = handleBillingValidation();
+        const valid : boolean = handleBillingValidation();
 
         if (valid) { setView(true) }
     }
