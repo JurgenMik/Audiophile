@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import Cart from './Cart';
 import {BsCart3} from 'react-icons/bs';
 
-function Nav({viewCart, handleViewCart, cart, setCart, quantity, setQuantity} : any) {
+function Nav({viewCart, handleViewCart, cart, setCart, quantity, setQuantity, total, setTotal} : any) {
     return (
         <nav className="w-full h-24 bg-black relative">
             <div className="w-3/4 h-full flex items-center ml-auto mr-auto border-b border-zinc-700">
@@ -31,7 +31,7 @@ function Nav({viewCart, handleViewCart, cart, setCart, quantity, setQuantity} : 
                     <BsCart3 onClick={handleViewCart} className="text-white text-2xl float-right hover:text-gray-400" />
                 </div>
             </div>
-            {viewCart ? <Cart cart={cart} setCart={setCart} quantity={quantity} setQuantity={setQuantity} /> : null}
+            {viewCart ? <Cart cart={cart} setCart={setCart} quantity={quantity} setQuantity={setQuantity} total={total} setTotal={setTotal} /> : null}
         </nav>
     );
 }

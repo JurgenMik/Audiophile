@@ -1,10 +1,8 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Link} from "react-router-dom";
 import {HiOutlineMinusSm, HiOutlinePlus} from "react-icons/hi";
 
-function Cart({cart, setCart, quantity, setQuantity} : any) {
-
-    const [total, setTotal] = useState<number>(0);
+function Cart({cart, setCart, quantity, setQuantity, total, setTotal} : any) {
 
     const handleRemoveAll = () => {
         setCart([]);
@@ -89,7 +87,7 @@ function Cart({cart, setCart, quantity, setQuantity} : any) {
                     <h1 className="uppercase text-gray-400 font-bold">
                         total
                     </h1>
-                    <p className="ml-auto float-right text-black text-xl">
+                    <p className="ml-auto float-right text-black text-xl font-bold">
                         ${total}
                     </p>
                 </div>

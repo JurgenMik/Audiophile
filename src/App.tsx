@@ -5,6 +5,7 @@ import Headphones from "./pages/Headphones";
 import Speakers from "./pages/Speakers";
 import Earphones from "./pages/Earphones";
 import ProductDetails from "./pages/ProductDetails";
+import Checkout from "./pages/Checkout";
 import data from './data.json';
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
     ]);
     const [cart, setCart] = useState<object[]>([]);
     const [viewCart, setViewCart] = useState<boolean>(false);
+    const [total, setTotal] = useState<number>(0);
 
     const handleViewCart = () => {
         setViewCart(!viewCart);
@@ -32,11 +34,71 @@ function App() {
   return (
         <BrowserRouter>
             <Routes>
-                <Route index element={<Home viewCart={viewCart} handleViewCart={handleViewCart} cart={cart} setCart={setCart} quantity={quantity} setQuantity={setQuantity} />} />
-                <Route path="headphones" element={<Headphones products={products} viewCart={viewCart} handleViewCart={handleViewCart} cart={cart} setCart={setCart} quantity={quantity} setQuantity={setQuantity} />} />
-                <Route path="speakers" element={<Speakers products={products} viewCart={viewCart} handleViewCart={handleViewCart} cart={cart} setCart={setCart} quantity={quantity} setQuantity={setQuantity} />} />
-                <Route path="earphones" element={<Earphones products={products} viewCart={viewCart} handleViewCart={handleViewCart} cart={cart} setCart={setCart} quantity={quantity} setQuantity={setQuantity} />} />
-                <Route path="product-details/:slug" element={<ProductDetails products={products} viewCart={viewCart} handleViewCart={handleViewCart} cart={cart} setCart={setCart} quantity={quantity} setQuantity={setQuantity} />} />
+                <Route index element={
+                    <Home
+                    viewCart={viewCart}
+                    handleViewCart={handleViewCart}
+                    cart={cart}
+                    setCart={setCart}
+                    quantity={quantity}
+                    total={total}
+                    setTotal={setTotal}
+                    setQuantity={setQuantity}
+                />}
+                />
+                <Route path="headphones" element={
+                    <Headphones
+                    products={products}
+                    viewCart={viewCart}
+                    handleViewCart={handleViewCart}
+                    cart={cart}
+                    setCart={setCart}
+                    total={total}
+                    setTotal={setTotal}
+                    quantity={quantity}
+                    setQuantity={setQuantity}
+                />}
+                />
+                <Route path="speakers" element={
+                    <Speakers
+                    products={products}
+                    viewCart={viewCart}
+                    handleViewCart={handleViewCart}
+                    cart={cart}
+                    setCart={setCart}
+                    total={total}
+                    setTotal={setTotal}
+                    quantity={quantity}
+                    setQuantity={setQuantity}
+                />}
+                />
+                <Route path="earphones" element={
+                    <Earphones
+                    products={products}
+                    viewCart={viewCart}
+                    handleViewCart={handleViewCart}
+                    cart={cart}
+                    total={total}
+                    setTotal={setTotal}
+                    setCart={setCart}
+                    quantity={quantity}
+                    setQuantity={setQuantity}
+                 />}
+                 />
+                <Route path="product-details/:slug" element={
+                    <ProductDetails
+                    products={products}
+                    viewCart={viewCart}
+                    total={total}
+                    setTotal={setTotal}
+                    handleViewCart={handleViewCart}
+                    cart={cart}
+                    setCart={setCart}
+                    quantity={quantity}
+                    setQuantity={setQuantity}
+                />}
+                />
+                <Route path="checkout" element={<Checkout cart={cart} quantity={quantity} total={total} />}/>
             </Routes>
         </BrowserRouter>
   );
