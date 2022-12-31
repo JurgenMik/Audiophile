@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {useNavigate} from "react-router-dom";
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
+import PaymentModal from "../components/PaymentModal";
 
 function Checkout({cart, quantity, total} : any) {
 
@@ -86,13 +87,14 @@ function Checkout({cart, quantity, total} : any) {
     return (
         <div className="w-full min-h-screen bg-gray-200">
             <Nav />
-            <div className="w-3/4 h-24 ml-auto mr-auto flex items-end">
+            <div className="w-3/4 h-24 ml-auto mr-auto flex items-end relative">
                 <h1 onClick={handleNavigateBack} className="text-gray-600 hover:text-gray-400">
                     Go Back
                 </h1>
             </div>
             <div className="w-3/4 h-3/4 ml-auto mr-auto flex space-x-4 mt-10">
                 <div className="w-2/3 h-full bg-white rounded-lg">
+                    {viewPaymentModal ? <PaymentModal cart={cart} vat={vat} shipping={shipping} quantity={quantity} total={total} /> : null}
                     <div className="w-full h-36 flex items-center pl-10">
                         <h1 className="font-bold text-3xl uppercase">
                             checkout
