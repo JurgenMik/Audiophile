@@ -15,13 +15,13 @@ Audiophile e-commerce website [Frontend Mentor Challenge](https://www.frontendme
   * VAT is calculated as 20% of the product total, excluding shipping
 * See an order confirmation <strong>model</strong> after checking out with an order summary
 ### Screenshots
-![image](https://user-images.githubusercontent.com/89903354/210155099-754a4257-6c57-4cab-8e40-b161c8f9f542.png)
+![image](https://user-images.githubusercontent.com/89903354/210155284-68dc2267-40a7-44cd-94bd-d7c05de46bc6.png)
 ![image](https://user-images.githubusercontent.com/89903354/210155122-93cc6b3e-2f2d-4cb2-b6d9-2e390b6b3ba5.png)
 ![image](https://user-images.githubusercontent.com/89903354/210155114-16765fe4-fb7a-4fcd-b850-898c90febce3.png)
 ![image](https://user-images.githubusercontent.com/89903354/210155120-66bc6958-cece-4809-9e27-816d98b1051c.png)
 ![image](https://user-images.githubusercontent.com/89903354/210155154-c90589bf-82bf-4bec-882d-59b7ee419bc0.png)
 ![image](https://user-images.githubusercontent.com/89903354/210155163-b24b42ba-5858-4910-a502-09c38f3cbd0d.png)
-![image](https://user-images.githubusercontent.com/89903354/210155170-3323a0e3-2534-4e41-bd0d-d29091f860e6.png)
+![image](https://user-images.githubusercontent.com/89903354/210155298-6e04f9f0-43c4-4b27-b889-dbd63b1b1bb8.png)
 ![image](https://user-images.githubusercontent.com/89903354/210155178-ff41cdab-bb2c-4eff-9ba2-3a236f082cb7.png)
 ![image](https://user-images.githubusercontent.com/89903354/210155185-7cb86d77-b6b4-47a7-84c5-c1890b422a05.png)
 ![image](https://user-images.githubusercontent.com/89903354/210155192-74524b70-9da4-46bd-b32a-7af6206f24b3.png)
