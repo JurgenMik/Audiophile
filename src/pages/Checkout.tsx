@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {useNavigate} from "react-router-dom";
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
@@ -10,8 +10,77 @@ function Checkout({cart, quantity, total} : any) {
     const vat = Math.floor(total * 0.2);
     const shipping = 50;
 
+    const [validate, setValidate] = useState({
+        paymentMethodError: '',
+        e_moneyError: '',
+        emailError: ''
+    })
+    const [viewPaymentModal, setView] = useState<boolean>(false);
+    const [billingInfo, setBilling] = useState<any>({
+        name: '',
+        email: '',
+        phone_nb: 0,
+        address: '',
+        zip: 0,
+        city: '',
+        country: '',
+        e_money: false,
+        cash: false,
+        e_money_pin: 0,
+        e_money_nb: 0
+    }
+   );
+
     const handleNavigateBack = () => {
         navigate(-1);
+    }
+
+    const handleInfoChange = (e : React.ChangeEvent<HTMLInputElement>) => {
+        setBilling({...billingInfo, [e.target.name] : e.target.value});
+    }
+
+    const handleCheckBoxChange = (e : React.ChangeEvent<HTMLInputElement>) => {
+        setBilling({...billingInfo, [e.target.name] : e.target.checked});
+    }
+
+    const handleBillingValidation = () => {
+        let paymentMethodError = '';
+        let e_moneyError = '';
+        let emailError = '';
+
+        if (!billingInfo.email || !billingInfo.email.match(/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/)) {
+            emailError = 'Invalid or Empty Email';
+        }
+
+        if (!billingInfo.cash && !billingInfo.e_money) {
+            paymentMethodError = 'Please choose a payment method';
+        }
+
+        if (billingInfo.e_money && !billingInfo.e_money.pin) {
+            e_moneyError = 'Please fill in your e_money details';
+        }
+
+        if (paymentMethodError) {
+            setValidate({...validate, paymentMethodError: paymentMethodError});
+            return false;
+        }
+
+        if (e_moneyError) {
+            setValidate({...validate, e_moneyError: e_moneyError});
+            return false;
+        }
+
+        if (emailError) {
+            setValidate({...validate, emailError: emailError});
+            return false;
+        }
+        return true;
+    }
+
+    const handleViewPaymentModal = () => {
+        const valid = handleBillingValidation();
+
+        if (valid) { setView(true) }
     }
 
     return (
@@ -28,6 +97,13 @@ function Checkout({cart, quantity, total} : any) {
                         <h1 className="font-bold text-3xl uppercase">
                             checkout
                         </h1>
+                        {validate.paymentMethodError || validate.emailError || validate.e_moneyError ?
+                            <div className="text-red-600 mb-2 ml-auto float-right pr-16 font-bold">
+                                <h1>{validate.paymentMethodError}</h1>
+                                <h1>{validate.emailError}</h1>
+                                <h1>{validate.e_moneyError}</h1>
+                            </div>
+                            : null}
                     </div>
                     <div className="w-4/5 h-full pl-10">
                         <div className="w-full h-48">
@@ -43,6 +119,7 @@ function Checkout({cart, quantity, total} : any) {
                                             placeholder="Alexei Ward"
                                             type="text"
                                             name="name"
+                                            onChange={handleInfoChange}
                                         />
                                     </div>
                                     <div className="w-1/2 h-16 flex flex-col space-y-2">
@@ -52,6 +129,7 @@ function Checkout({cart, quantity, total} : any) {
                                             placeholder="alexei@gmail.com"
                                             type="email"
                                             name="email"
+                                            onChange={handleInfoChange}
                                         />
                                     </div>
                                 </div>
@@ -62,6 +140,7 @@ function Checkout({cart, quantity, total} : any) {
                                         placeholder="+1202-555-0136"
                                         type="number"
                                         name="phone_nb"
+                                        onChange={handleInfoChange}
                                     />
                                 </div>
                             </div>
@@ -79,6 +158,7 @@ function Checkout({cart, quantity, total} : any) {
                                     placeholder="1137 Williams Avenue"
                                     type="text"
                                     name="address"
+                                    onChange={handleInfoChange}
                                 />
                             </div>
                             <div className="w-full h-36 flex items-center space-x-4">
@@ -89,6 +169,7 @@ function Checkout({cart, quantity, total} : any) {
                                         placeholder="10001"
                                         type="number"
                                         name="zip"
+                                        onChange={handleInfoChange}
                                     />
                                 </div>
                                 <div className="w-1/2 h-16 flex flex-col space-y-2">
@@ -98,6 +179,7 @@ function Checkout({cart, quantity, total} : any) {
                                         placeholder="New York"
                                         type="text"
                                         name="city"
+                                        onChange={handleInfoChange}
                                     />
                                 </div>
                             </div>
@@ -108,6 +190,7 @@ function Checkout({cart, quantity, total} : any) {
                                     placeholder="United States"
                                     type="text"
                                     name="country"
+                                    onChange={handleInfoChange}
                                 />
                             </div>
                         </div>
@@ -124,26 +207,30 @@ function Checkout({cart, quantity, total} : any) {
                                     </h1>
                                 </div>
                                 <div className="w-1/2 flex flex-col space-y-2">
-                                    <div className="w-full h-12 flex rounded-lg border border-gray-300">
+                                    <div className={`w-full h-12 flex rounded-lg border ${billingInfo.e_money ? "border-orange-500" : "border-gray-300"}`}>
                                         <div className="w-full h-full flex items-center pl-4 space-x-4">
                                             <input
                                                 type="checkbox"
                                                 name="e_money"
-                                                className="h-3 w-3 focus:ring-0"
+                                                className="appearance-none h-3 w-3 focus:ring-0 rounded-full border border-gray-500 checked:bg-orange-500 checked:border-0"
+                                                checked={billingInfo.e_money}
+                                                onChange={handleCheckBoxChange}
                                             />
-                                            <h1 className="font-bold">
+                                            <h1 className="font-bold text-sm">
                                                 e-Money
                                             </h1>
                                         </div>
                                     </div>
-                                    <div className="w-full h-12 flex rounded-lg border border-gray-300">
+                                    <div className={`w-full h-12 flex rounded-lg border ${billingInfo.cash ? "border-orange-500" : "border-gray-300"}`}>
                                         <div className="w-full h-full flex items-center pl-4 space-x-4">
                                             <input
                                                 type="checkbox"
                                                 name="cash"
-                                                className="h-3 w-3 focus:ring-0"
+                                                className="appearance-none h-3 w-3 focus:ring-0 rounded-full border border-gray-500 checked:bg-orange-500 checked:border-0"
+                                                checked={billingInfo.cash}
+                                                onChange={handleCheckBoxChange}
                                             />
-                                            <h1 className="font-bold">
+                                            <h1 className="font-bold text-sm">
                                                 Cash On Delivery
                                             </h1>
                                         </div>
@@ -158,6 +245,7 @@ function Checkout({cart, quantity, total} : any) {
                                         placeholder="238521993"
                                         type="number"
                                         name="e_money_nb"
+                                        onChange={handleInfoChange}
                                     />
                                 </div>
                                 <div className="w-1/2 flex flex-col space-y-2">
@@ -167,6 +255,7 @@ function Checkout({cart, quantity, total} : any) {
                                         placeholder="6891"
                                         type="number"
                                         name="e_money_pin"
+                                        onChange={handleInfoChange}
                                     />
                                 </div>
                             </div>
@@ -248,7 +337,7 @@ function Checkout({cart, quantity, total} : any) {
                                 </p>
                             </div>
                             <div className="flex justify-center pb-8 mt-8">
-                                <button className="w-full h-10 bg-orange-500 uppercase text-white font-bold hover:text-gray-400">
+                                <button onClick={handleViewPaymentModal} className="w-full h-10 bg-orange-500 uppercase text-white font-bold hover:text-gray-400">
                                     continue & pay
                                 </button>
                             </div>
